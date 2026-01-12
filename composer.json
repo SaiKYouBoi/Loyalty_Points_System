@@ -1,0 +1,15 @@
+{
+    "name": "saikyouboi/loyalty_points_system",
+    "autoload": {
+        "psr-4": {
+            "Saikyouboi\\LoyaltyPointsSystem\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SaiKYouBoi",
+            "email": "iliaselggames@gmail.com"
+        }
+    ],
+    "require": {}
+}
