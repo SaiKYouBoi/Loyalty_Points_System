@@ -1,7 +1,11 @@
 <?php
+
 use App\Core\Router;
 use App\Controllers\ShopController;
+use App\Controllers\AuthController;
 
 Router::get('/', [ShopController::class, 'index']);
 Router::get('/shop', [ShopController::class, 'index']);
-Router::post('/shop/redeem', [ShopController::class, 'redeem']);
+Router::get('/login', [AuthController::class, 'login']);
+Router::get('/register', [AuthController::class, 'register']);
+Router::post('/register', [AuthController::class, 'submitregister']);
