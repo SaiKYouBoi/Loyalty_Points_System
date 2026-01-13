@@ -7,7 +7,7 @@ class ShopController extends Controller
 {
     public function index(): void
     {
-        $this->view('index.twig', [
+        $this->view('index.view.twig', [
             'title' => 'ilias'
         ]);
     }
