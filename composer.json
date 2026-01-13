@@ -2,7 +2,7 @@
     "name": "saikyouboi/loyalty_points_system",
     "autoload": {
         "psr-4": {
-            "Saikyouboi\\LoyaltyPointsSystem\\": "src/"
+            "App\\": "App/"
         }
     },
     "authors": [
