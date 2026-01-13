@@ -3,5 +3,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\Router;
 
-$router = new Router();
-$router->dispatch();
+require_once __DIR__ . '/../Routes/web.php';
+
+Router::dispatch();

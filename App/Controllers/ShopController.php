@@ -7,14 +7,14 @@ class ShopController extends Controller
 {
     public function index(): void
     {
-        $users = [
-            ['username' => 'Alice'],
-            ['username' => 'Bob']
-        ];
-
-        $this->view('home.twig', [
-            'title' => 'Home',
-            'users' => $users
+        $this->view('index.twig', [
+            'title' => 'ilias'
         ]);
+    }
+
+    public function redeem(): void
+    {
+        // handle POST logic here
+        echo "Reward redeemed";
     }
 }
