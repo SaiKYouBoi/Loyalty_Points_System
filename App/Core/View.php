@@ -4,7 +4,7 @@ namespace App\Core;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Lexer;
-
+use Twig\TwigFunction;
 
 class View
 {
@@ -20,7 +20,11 @@ class View
                 'debug' => true
             ]);
 
+            
             self::registerLexer();
+            self::$twig->addFunction(new TwigFunction('session', 'session'));
+
+            
         }
 
         echo self::$twig->render($template, $data);
