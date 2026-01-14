@@ -9,3 +9,4 @@ Router::get('/shop', [ShopController::class, 'index']);
 Router::get('/login', [AuthController::class, 'login']);
 Router::get('/register', [AuthController::class, 'register']);
 Router::post('/register', [AuthController::class, 'submitregister']);
+Router::post('/login', [AuthController::class, 'submitLogin']);
