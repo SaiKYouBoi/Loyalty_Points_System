@@ -23,7 +23,7 @@ class View
             
             self::registerLexer();
             self::$twig->addFunction(new TwigFunction('session', 'session'));
-
+            
             
         }
 
@@ -42,3 +42,5 @@ class View
     }
     
 }
+
+{}
