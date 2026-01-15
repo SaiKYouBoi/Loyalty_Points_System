@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+		<title>Rewards Catalog Page</title>
+		<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+		<style type="text/tailwindcss">
+			@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+			        .material-symbols-outlined {
+			            font-variation-settings:
+			            'FILL' 0,
+			            'wght' 400,
+			            'GRAD' 0,
+			            'opsz' 24
+			        }
+		</style>
+		<script>
+			tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+"primary": "#136dec",
+"background-light": "#f6f7f8",
+"background-dark": "#101822"
+},
+fontFamily: {
+"display": ["Inter", "sans-serif"]
+},
+borderRadius: {
+"DEFAULT": "0.25rem",
+"lg": "0.5rem",
+"xl": "0.75rem",
+"full": "9999px"
+}
+}
+}
+}
+		</script>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+	</head>
+	<body class="font-display bg-background-light dark:bg-background-dark">
+		<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+			<div class="layout-container flex h-full grow flex-col">
+				<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-4 sm:px-6 lg:px-10 py-3 bg-white dark:bg-slate-900/50 backdrop-blur-sm sticky top-0 z-10">
+					<div class="flex items-center gap-4 text-slate-900 dark:text-slate-50">
+						<div class="size-6 text-primary">
+							<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+								<g clip-path="url(#clip0_6_330)">
+									<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+								</g>
+								<defs>
+									<clippath id="clip0_6_330">
+										<rect fill="white" height="48" width="48"></rect>
+									</clippath>
+								</defs>
+							</svg>
+						</div>
+						<h2 class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-tight tracking-[-0.015em]">ShopEasy</h2>
+					</div>
+					<div class="hidden md:flex flex-1 justify-center gap-8">
+						<div class="flex items-center gap-9">
+							<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Home</a>
+							<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Shop</a>
+							<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Categories</a>
+							<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">My Account</a>
+						</div>
+					</div>
+					<div class="flex items-center gap-2">
+						<button class="hidden sm:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
+							<span class="truncate">Rewards</span>
+						</button>
+						<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-50 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+							<span class="material-symbols-outlined text-xl">favorite</span>
+						</button>
+						<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-50 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+							<span class="material-symbols-outlined text-xl">shopping_cart</span>
+						</button>
+						<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKIOHFsXJDKS60_-nGjztfc6B5zTWDI-BMB3m88Cr0zhdWFhFZSovMrhaGeAJEbiCDoX6LkuL0e3C5tuCYoZXCK9EhdcOomPbQP_771hPlXuLyAFsxmob-PdHkRZ8AV3Ut-HKYjpvrZ36FhnrbLQRItrHuateUCx_-RKaDe6UoTzF5ZnTjLsv3VpVo3O5UGe9TvJE8VxqDoDNkPiRM7h-p3VFoZ_ycHc9fHJkYNaqHK2jeub5jmHbg0guWO3R3J2_OUvO57Mqf6ReW");'></div>
+					</div>
+				</header>
+				<main class="flex-1 px-4 sm:px-6 lg:px-10 py-8">
+					<div class="layout-content-container flex flex-col max-w-6xl mx-auto flex-1">
+						<div class="flex flex-wrap justify-between gap-4 items-center p-4 mb-6">
+							<div class="flex flex-col gap-1">
+								<p class="text-slate-900 dark:text-slate-50 text-4xl font-black leading-tight tracking-[-0.033em]">Rewards Catalog</p>
+								<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">Redeem your points for exclusive rewards.</p>
+							</div>
+							<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 min-w-[280px]">
+								<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Your Points Balance</p>
+								<p class="text-primary text-3xl font-bold">2,500 Points</p>
+							</div>
+						</div>
+						<div
+							class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4">
+							<!-- Affordable Card -->
+							<div class="flex flex-col gap-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border-2 border-primary/50 dark:border-primary/40 overflow-hidden">
+								<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Image of a gift coupon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzWMhHCh_tDyVBwuX_OxBy0-fL8F5wtLMZePFBRSe1bTy2rCKgcWLdMl-AmbKeH8z1AHNGT6C0q4vwpd6daS-PFmSUqNRvSjFUyl38OaG79oPV5z_TuJgd850Ej1-cZKOmY8xvPvAaD8Li36YJ1gtuZVSy5yd2rF5LASqZoZZrwtPZiUGMLiMxlQEG8oRh9mCpwHOBykUuw5n6YuJmvJx8BQVxg6YcYGsj-9Z0qobMiasB7yLJLttt6vpWNBbKIh5Ndz6W5kTHMlP5");'></div>
+								<div class="flex flex-col p-4 pt-0 flex-1">
+									<div class="flex items-center justify-between mb-2">
+										<p class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-normal">$10 Off Coupon</p>
+										<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:text-green-300">In Stock</span>
+									</div>
+									<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal mb-4 flex-1">Get $10 off your next purchase of $50 or more.</p>
+									<p class="text-slate-900 dark:text-slate-200 text-base font-bold leading-normal mb-4">1,000 Points</p>
+									<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+										<span class="truncate">Redeem</span>
+									</button>
+								</div>
+							</div>
+							<!-- Unaffordable Card -->
+							<div class="flex flex-col gap-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+								<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Stylish canvas tote bag" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRclM9uBKBhcBfOyy2ySlqw1tTzyUVBsteR3Cr-8EXm-8_HSoOvv4QusgMTmoDYJ49hWdVFfX3DBmgE0z_enMx8tZ6PjSZtm2rkNgPZ9Nfp6aMiLVRHt71Lf7u9hR73cVPO4Vi064bFRq3_rpZcQnlxxzouPraeTuEklrAm-AkqEpWv__41FYGNI7UGvnwGeNhnAA1vu9xPQgL8B86ij6hEDcaTFKsbywvJ3MnQcgvPYKW5Vndow-G1udY_jxD6EsAj9pnqQf-UQNG");'></div>
+								<div class="flex flex-col p-4 pt-0 flex-1">
+									<div class="flex items-center justify-between mb-2">
+										<p class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-normal">Free Tote Bag</p>
+										<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:text-green-300">In Stock</span>
+									</div>
+									<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal mb-4 flex-1">A stylish and durable ShopEasy canvas tote.</p>
+									<p class="text-slate-900 dark:text-slate-200 text-base font-bold leading-normal mb-4">3,000 Points</p>
+									<button class="flex w-full cursor-not-allowed items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-sm font-bold leading-normal tracking-[0.015em]">
+										<span class="truncate">Redeem</span>
+									</button>
+								</div>
+							</div>
+							<!-- Out of Stock Card -->
+							<div class="flex flex-col gap-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+								<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Image of a discount voucher" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0wIuIY2BkLZ0uGRlc00JUIjLR54a2VS1gX3CjG-5VsqrPmt4KMWOMr0bgVppuT87ls5AsI2GcF27E0bnyGfdZ962TXGYKT44ZHwTv3nXkPmcWmAUC7JxyXfgybZg11OKnOBPdBBg8x3mlVbxSJpOtF0r-vAh8MXUGffbOmgPTBksNBscheeD5ABADbEo8lCqGDEZoHmPeH5SkHx3Bmm4d-T0S55AmOjdGYCySw9lmMakYlpUUFd_TNTHCQhY3Z9lSx05qr06-Sv-z");'></div>
+								<div class="flex flex-col p-4 pt-0 flex-1">
+									<div class="flex items-center justify-between mb-2">
+										<p class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-normal">20% Discount Voucher</p>
+										<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/50 px-2.5 py-0.5 text-xs font-semibold text-red-800 dark:text-red-300">Out of Stock</span>
+									</div>
+									<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal mb-4 flex-1">Save 20% on any single item in our store.</p>
+									<p class="text-slate-900 dark:text-slate-200 text-base font-bold leading-normal mb-4">1,500 Points</p>
+									<button class="flex w-full cursor-not-allowed items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-sm font-bold leading-normal tracking-[0.015em]">
+										<span class="truncate">Redeem</span>
+									</button>
+								</div>
+							</div>
+							<!-- Affordable Card -->
+							<div class="flex flex-col gap-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border-2 border-primary/50 dark:border-primary/40 overflow-hidden">
+								<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Image of free shipping box" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7yabFsrbgri_iRDd_rurqUiqu10m2Tb_VrP3wQ0Zy7M7wLtYd0sgxf5AI6SIH_j5Se_iPzfRH_JM85FDks-BuZfTw27XQClHkZ3rwDg18HkmZsQqsaCBOzG0ecNcrWRuGfoPniqaqXNQx0j8eGso92hvt9HkIrBTTTP7U4jJM9iuAmnK9ZOX5Sptfzc51dMnxmHqy47n7nDDRWuhf-xygHxTmE_k_DxyJEpzcOexSaZ7tHshBGpLGynLD5-Z10pu2d7Qg86OfSpjO");'></div>
+								<div class="flex flex-col p-4 pt-0 flex-1">
+									<div class="flex items-center justify-between mb-2">
+										<p class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-normal">Free Shipping</p>
+										<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:text-green-300">In Stock</span>
+									</div>
+									<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal mb-4 flex-1">Get free standard shipping on your next order.</p>
+									<p class="text-slate-900 dark:text-slate-200 text-base font-bold leading-normal mb-4">500 Points</p>
+									<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+										<span class="truncate">Redeem</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="flex flex-col px-4 py-16">
+							<div class="flex flex-col items-center gap-6 text-center">
+								<div class="bg-center bg-no-repeat bg-contain aspect-square w-full max-w-[200px]" data-alt="Illustration of an empty gift box" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_cd4eAC7i7BjIiiCPeJzgem6XjKZo-9HSmgFP5mYGxUFDuBChdrxu7158gwCaYXyI8yCtrZ0KA2P5hBtjwyQWv1nABQpdJtyo4a4hMwNoyCb74wP3hyJ94Rh9JaljYR_dJY34F-bNspo01l9y4V0suBe4j0d4VpDxT35J8hK243QkIdXMxMj1p2OVD4WADJFJb9cfi03dyAjOnSosQMkkX2-Ld-PdjW2UMJe6_yeQKsNufMzCwDMFsUvxXRExQlPsJfsxCHBVdu_Y");'></div>
+								<div class="flex max-w-[480px] flex-col items-center gap-2">
+									<p class="text-slate-900 dark:text-slate-50 text-lg font-bold leading-tight tracking-[-0.015em]">No More Rewards Available Yet</p>
+									<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal">Check back soon for exciting new rewards! In the meantime, learn more about how to earn points.</p>
+								</div>
+								<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+									<span class="truncate">How to Earn Points</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</body>
+</html>
