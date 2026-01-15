@@ -110,7 +110,7 @@ class AuthController extends Controller
                     if (password_verify($password, $user['password_hash'])) {
                         unset($_SESSION['email'], $_SESSION['password']);
                         Session::set('user_id', $user['id']);
-                        Session::flash('success', "Connexion réussie.");
+                        Session::flash('success', "Connected succesfully.");
                         header("Location: /");
                         exit();
                     } else {
@@ -144,4 +144,11 @@ class AuthController extends Controller
             $err = true;
         }
     }
+
+     public function logout(){
+        session_destroy();
+        header("Location: /login");
+        exit();
+    }
+    
 }
