@@ -23,7 +23,7 @@ class View
             
             self::registerLexer();
             self::$twig->addFunction(new TwigFunction('session', 'session'));
-            
+            self::$twig->addGlobal('current_path', $_SERVER['REQUEST_URI']);
             
         }
 
