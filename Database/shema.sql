@@ -1,4 +1,3 @@
-    -- Users table
 
     CREATE TABLE users (
 
@@ -16,7 +15,6 @@
 
     );
 
-    -- Points transactions
 
     CREATE TABLE points_transactions (
 
@@ -38,7 +36,6 @@
 
     );
 
-    -- Rewards catalog
 
     CREATE TABLE rewards (
 
@@ -50,6 +47,43 @@
 
     description TEXT,
 
-    stock INT DEFAULT -1 -- -1 = unlimited
+    stock INT DEFAULT -1 
 
     );
+
+    CREATE TABLE products (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    name VARCHAR(100) NOT NULL,
+
+    price DECIMAL(10,2) NOT NULL,
+
+    description TEXT,
+
+    image_url VARCHAR(255)
+    );
+
+    CREATE TABLE orders (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    user_id INT NOT NULL,
+
+    total_amount INT NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+
+
+    INSERT INTO products (name, price, description, image_url) VALUES
+    ('Wireless Pro Headphones', 149.99, 'High quality wireless over-ear headphones in matte black.', ''),
+    ('Smart Watch Series 7', 329.00, 'Modern smartwatch with stainless steel band and digital face.', ''),
+    ('Eco-Steel Bottle', 35.00, 'Eco-friendly insulated water bottle in forest green.', ''),
+    ('Leather Travel Bag', 120.00, 'Classic leather weekender bag in tan brown.', ''),
+    ('Organic Cotton Tee', 28.00, 'Organic cotton t-shirt in minimalist white.', ''),
+    ('Minimalist Desk Lamp', 55.00, 'Minimalist wooden desk lamp with warm light.', ''),
+    ('Noise Cancelling Earbuds', 129.99, 'Sleek black noise cancelling earbuds in charging case.', ''),
+    ('Portable Power Bank', 45.00, 'Compact portable power bank with multiple ports.', '');

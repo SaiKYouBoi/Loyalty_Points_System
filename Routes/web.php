@@ -15,3 +15,5 @@ Router::post('/logout', [AuthController::class, 'logout']);
 Router::get('/reward', [ShopController::class, 'reward']);
 Router::get('/transactions', [PointsController::class, 'transactions']);
 
+Router::get('/checkout', [ShopController::class, 'checkout']);
+Router::get('/shop', [ShopController::class, 'shop']);
