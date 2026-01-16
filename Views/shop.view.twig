@@ -1,95 +1,4 @@
-<!DOCTYPE html>
-
-<html class="light" lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-		<title>ShopEasy - Product Catalog</title>
-		<!-- Tailwind CSS -->
-		<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-		<!-- Google Fonts -->
-		<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-		<!-- Material Symbols -->
-		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-		<script id="tailwind-config">
-			tailwind.config = {
-darkMode: "class",
-theme: {
-extend: {
-colors: {
-"primary": "#136dec",
-"background-light": "#f6f7f8",
-"background-dark": "#101822"
-},
-fontFamily: {
-"display": ["Inter", "sans-serif"]
-},
-borderRadius: {
-"DEFAULT": "0.25rem",
-"lg": "0.5rem",
-"xl": "0.75rem",
-"full": "9999px"
-}
-}
-}
-}
-		</script>
-		<style>
-			.material-symbols-outlined {
-				font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-			}
-		</style>
-	</head>
-	<body
-		class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
-		<!-- Top Navigation Bar -->
-		<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
-			<div
-				class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between gap-8">
-				<!-- Logo and Main Nav -->
-				<div class="flex items-center gap-8">
-					<div class="flex items-center gap-2 text-primary">
-						<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
-							<span class="material-symbols-outlined">shopping_bag</span>
-						</div>
-						<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">ShopEasy</h2>
-					</div>
-					<nav class="hidden md:flex items-center gap-6">
-						<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Home</a>
-						<a class="text-primary text-sm font-semibold transition-colors" href="#">Shop</a>
-						<a class="flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">
-							<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
-							Loyalty Dashboard
-						</a>
-					</nav>
-				</div>
-				<!-- Search and Actions -->
-				<div class="flex flex-1 justify-end items-center gap-4">
-					<div class="relative max-w-sm w-full hidden lg:block">
-						<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-							<span class="material-symbols-outlined text-[20px]">search</span>
-						</div>
-						<input class="block w-full pl-10 pr-3 py-2 border-none bg-slate-100 dark:bg-slate-800 rounded-lg text-sm placeholder:text-slate-500 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search products..." type="text"/>
-					</div>
-					<div class="flex items-center gap-2">
-						<button class="relative p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
-							<span class="material-symbols-outlined">shopping_cart</span>
-							<span class="absolute top-1 right-1 size-4 bg-primary text-white text-[10px] font-bold flex items-center justify-center rounded-full">3</span>
-						</button>
-						<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 mx-2"></div>
-						<div class="flex items-center gap-3">
-							<div class="text-right hidden sm:block">
-								<p class="text-xs font-medium text-slate-500">My Balance</p>
-								<p class="text-sm font-bold text-primary">1,250 Pts</p>
-							</div>
-							<div class="size-9 rounded-full bg-slate-200 dark:bg-slate-800 bg-cover bg-center ring-2 ring-white dark:ring-slate-700" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAohV5iAU9lEBvUs1G67urqxgKOBjSwId42Sxi3rJbuwIOz1nNW6nFa86OnZA051k8HM_dImHlp3f4eFBJSW3-ppricCbFfCO3Qdai2EdNDSmR5nhiWXPGY4S4i3NYC5DJY04HYu9qZYyIlnq_vWwistUafQG0stBbBPN78EQZjAwrrS8zoV5R4tAI0xE8eoWEzj1oxW0s6PnD9pS1UT3z6DeMNRUHEVRQ2IOBFMIg9hg-8_fpLNrRcNKdolQBk_Tl1uLAeNaj6af9p");'></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
+{@ include 'header.layout.twig' @}
 		<main
 			class="max-w-[1280px] mx-auto px-6 py-8">
 			<!-- Hero/Headline Section -->
@@ -121,20 +30,21 @@ borderRadius: {
 			<!-- Product Grid -->
 			<div
 				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-				<!-- Product Card 1 -->
+				{@ for product in products @}
+                <!-- Product Card 1 -->
 				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
 					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
 						<div class="absolute top-3 right-3 z-10">
 							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +15 Pts</span>
 						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="High quality wireless over-ear headphones in matte black" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtQPL-4LcWSsz2DMxIHf2j7DKvNc2NvO3amYyPg9IopAyPNGpuzr4F4adgGTvcyZGQtW63ZXUeRtrORWwoLMsfW75TJDRa6Q5IIpZ9y-3YDt7uKGpVPG8qkOvsBOqlLGpW0hc0j3-5limUGyKgBt8G67oz20ahLltDF8zs9mdUr0PRBWVhFy58gM2lEQycA2t3gMF4yLxKNwtnFWZVwW1bAIQGNmToKrAMKf64dqT5g3fQ-YN1vcZ8XPw6Ql-3-MvLFmobVfHki4bT");'></div>
+						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="High quality wireless over-ear headphones in matte black" style='background-image: url("{{ product.image_url }}");'></div>
 					</div>
 					<div class="p-5 flex flex-col flex-1">
 						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Electronics</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Wireless Pro Headphones</h3>
+						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">{{ product.name }}</h3>
 						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$149.99</span>
-							<span class="text-sm text-slate-400 line-through">$189.99</span>
+							<span class="text-xl font-bold text-slate-900 dark:text-white">${{ product.price }}</span>
+							{# <span class="text-sm text-slate-400 line-through">$189.99</span> #}
 						</div>
 						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
 							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
@@ -142,146 +52,7 @@ borderRadius: {
 						</button>
 					</div>
 				</div>
-				<!-- Product Card 2 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +40 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern smartwatch with stainless steel band and digital face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNTsUKkLYP75mKrOby6NfwbtKf6zRn2dfizl1WnZ2DnPMED2asAOazg8bRr-62Z0ZRQx3AyZTVrQYLEY2Bpw7g5iypIKeSFymy1OifIf3457xCu_iMQO2FEUPXD601S5iRCgNAAbuspJd5OpRp8mkNc5d8_yAr0zDw0zgVrCcMc-s5L1XXhbgWVqmIDOSBWelmXzkMR2XFgEQt34N6haIqKS645tk9k5qR4FL6GF2EQkQcSMKSU8MOYG8pq4YiVpQhQaIlvcoCW2Ud");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Wearables</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Smart Watch Series 7</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$329.00</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
-				<!-- Product Card 3 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +10 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Eco-friendly insulated water bottle in forest green" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAk2A5k85qdrN5Ty-CetGwU9v-mwVxskReYJKxmbIMVOECKtpAbrQLKUhLZHcgn-7sLs82RrE5s5BT9JZZbWvz28pyYh5PFaW8QG3qMiFPLrKLxjT-5HDSwm-VrP3rmyagNOcIiyu4QBtonJ6JT3ASgC8aFbt5FSgCjWfznxafSokQxKhLlcunpwGy8RfYxHSJfgKvGPP32fn7C5Xh3Jif9gYUuWcHsdnkmYQq40vRbYINO-bmUUWjv9KnDMxFnHeTJ6mxiSEEn2K_B");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Lifestyle</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Eco-Steel Bottle</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$35.00</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
-				<!-- Product Card 4 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +25 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Classic leather weekender bag in tan brown" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4qmZ3B-RwBVLrxLKt6TVhE1qyjz5YqNbXKzOcnCtUogihOpb6FPx6f7nkyR-d4jCRbTm6u6uGQdKbmGIwxqx3du_bF2CO_TpNuVKV0QooGLKrOFMWqPY9czJ1Evog5_OF5-xSmg2DiOq00Z5Mp2Fsui--RNH_7anvTAxEALKtxiV9FDiAYooM1sQQkyU-_E2riw34_jXOm2qaJMtpJUO-rJhvtsgTOGkT9yqBDqwNMRXv8VmljE7jY5WZwHgoWPawlDZkmDnqie_S");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Travel</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Leather Travel Bag</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$120.00</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
-				<!-- Product Card 5 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +12 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Organic cotton t-shirt in minimalist white" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDX7QSVb1ul529YniXvHUAeGlc_CiwE8KjOKk4ZznakSMTh_JdKftAiDixtaGMrQ37TE8weOap3mc0Qx87--LQdgaPTR_K5sk0r29LWE4rkWG9VMi2mNHUcxzPWWhFUfUFTVMSqFI2O1pRqdXpYMSFAOTqb-kr2k0Br47QQsuibNpj8qwKEg1qGYzLtiXpOyIJouM9fWbqP46zAre3hDAfRPdwsmrD8BpusgKZFU2-RZIcoAecpKYfpgWqIKMO8ksrk8UU0v6ZQGYNC");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Apparel</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Organic Cotton Tee</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$28.00</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
-				<!-- Product Card 6 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +18 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Minimalist wooden desk lamp with warm light" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBpQ8hQyx_nBBa4a92YoDxqI7Sioc4RVox9TZUQbVfizIdq8pCRn5guGZAygw5oNQsWkRxli8sH5iwZzsPJE2wMWSXm5p-heo2E8jDduVkevoRRwWtmeNCkBCvrKueOhg-tp_omECQOVxNxCSXjxguSdmGtJBfdzErxdCOl-PG-Sx7q-bOHCZKoqZ7KzbuHjOMPgaJVWBHOorF7WkyKMLqkkiXOKNcjZl2zDunldER8YYU42vR5jy6EgCIWny-RBkFlYfO3E5NzZPTx");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Home Office</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Minimalist Desk Lamp</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$55.00</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
-				<!-- Product Card 7 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +20 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Sleek black noise cancelling earbuds in charging case" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9as8JGCvkTKeQlwTlwpBQLhstAGnWEXMig5_rYraXPjy-s_5Ez4M-GQ9UI_JWFDtDQyzuwKXan4ZVOAHOZsEpWpeUABUzI4TlMXum140uByYXBDjlpSwhSVjLoLjrog9eFp48UeQm8zN1PmZXgEfAfS5AR16GGHMo-a6P_lfbuzyPyo7kr_8opHxGlcjLkGRori2IOgk0Rcv4lX7puRXR8Odz6An3OGCd4KfH7qDL9aQjgkbj98T45sNM4uahQM9T-J1jXa25QcSX");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Electronics</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Noise Cancelling Earbuds</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$129.99</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
-				<!-- Product Card 8 -->
-				<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all flex flex-col">
-					<div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
-						<div class="absolute top-3 right-3 z-10">
-							<span class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wider">Earn +15 Pts</span>
-						</div>
-						<div class="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Compact portable power bank with multiple ports" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASaXg--4OsAVAALIM35kmor7IjJCSty0qiNem_PhbgxR9JEV5F6-IQwbsrIhByIeHdnPNvv_rW0s-rl_E5gxrYRIn_8-Ad-02dJO9q1Z-gLFFEuEQM-2Z4cOazqKkv3scfmCbrlFCXstUI0Uc3NdxHfF4qHSP4MGE59RNVFY-8yH6ZZQwXnyG1bnypEuwI4W6Hbah-qF8wXMMaQSf6m7wFQr1FMX6DjB0UNTwhD5xBk0Gbf2TEa6W0qkufSqP7CZ00GVHuy7QHg0dR");'></div>
-					</div>
-					<div class="p-5 flex flex-col flex-1">
-						<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Tech Accessories</p>
-						<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight mb-2 group-hover:text-primary transition-colors">Portable Power Bank</h3>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-xl font-bold text-slate-900 dark:text-white">$45.00</span>
-						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
-							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-							Add to Cart
-						</button>
-					</div>
-				</div>
+                {@ endfor @}
 			</div>
 			<!-- Pagination -->
 			<div class="flex items-center justify-center pt-8 border-t border-slate-200 dark:border-slate-800">
@@ -301,18 +72,6 @@ borderRadius: {
 			</div>
 		</main>
 		<!-- Simple Footer -->
-		<footer class="mt-12 py-12 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark">
-			<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-				<div class="flex items-center gap-2 text-slate-400">
-					<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
-					<span class="text-sm font-medium">© 2024 ShopEasy E-commerce. All rights reserved.</span>
-				</div>
-				<div class="flex gap-8">
-					<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Privacy Policy</a>
-					<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Terms of Service</a>
-					<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Contact Us</a>
-				</div>
-			</div>
-		</footer>
+		{@ include 'footer.layout.twig' @}
 	</body>
 </html>
