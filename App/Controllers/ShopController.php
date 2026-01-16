@@ -3,19 +3,23 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\View;
-use App\Models\ProductModel;
+use Database\Database;
 
 class ShopController extends Controller
 {   
-    private ProductModel $products;
 
-    public function __construct(ProductModel $products)
-    {
-        $this->products = $products;
+    public function shop(): void
+    {   
+        $stmt = Database::getInstance()->query("SELECT * FROM products");
+
+        $products = $stmt->fetchAll();
+
+        $this->view('shop.view.twig', [
+            'products' => $products
+        ]);
     }
-
     
-
+    
     public function index(): void
     {
         $this->view('home.view.twig');
@@ -23,15 +27,6 @@ class ShopController extends Controller
     public function reward(): void
     {
         $this->view('rewards.view.twig');
-    }
-
-    public function shop(): void
-    {   
-        $products = $this->products->all();
-
-        $this->view('shop.view.twig', [
-            'products' => $products
-        ]);
     }
 
     public function checkout(): void
@@ -45,5 +40,3 @@ class ShopController extends Controller
         echo "Reward redeemed";
     }
 }
-
-

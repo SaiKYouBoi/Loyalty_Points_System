@@ -11,6 +11,7 @@ class ProductModel
 
     public function __construct(PDO $db)
     {
+
         $this->db = Database::getInstance();
     }
 
