@@ -8,24 +8,24 @@ use PDO;
 
 class User
 {
-    private int $id;
-    private string $email;
-    private string $password;
+    private ?int $id;
+    private ?string $email;
+    private ?string $password;
     private ?string $name;
-    private int $totalPoints;
-    private DateTime $createdAt;
+    private ?int $totalPoints;
+    private ?DateTime $createdAt;
 
-    public function __construct(array $data)
+    public function __construct(array $data = [])
     {
-        $this->id = (int) $data['id'];
-        $this->email = $data['email'];
-        $this->password = $data['password_hash'];
+        $this->id = (int) ($data['id'] ?? null);
+        $this->email = $data['email']?? null;
+        $this->password = $data['password_hash'] ?? null;
         $this->name = $data['name'] ?? null;
         $this->totalPoints = $data['total_points'] ?? 0;
-        $this->createdAt = new DateTime($data['created_at']);
+        $this->createdAt = new DateTime($data['created_at'] ?? '');
     }
 
-    public static function findByEmail(string $email): ?self
+    public  function findByEmail(string $email): ?self
     {
         $stmt = Database::getInstance()->prepare(
             "SELECT * FROM users WHERE email = ? LIMIT 1"
@@ -37,7 +37,7 @@ class User
         return $data ? new self($data) : null;
     }
 
-    public static function emailExists(string $email): bool
+    public function emailExists(string $email): bool
     {
         $stmt = Database::getInstance()->prepare(
             "SELECT 1 FROM users WHERE email = ?"
@@ -47,7 +47,7 @@ class User
         return $stmt->rowCount() > 0;
     }
 
-    public static function create(string $name, string $email, string $password): bool
+    public function create(string $name, string $email, string $password): bool
     {
         $stmt = Database::getInstance()->prepare(
             "INSERT INTO users (name, email, password_hash)
@@ -61,13 +61,13 @@ class User
         ]);
     }
 
-    public static function totalPoints()
+    public function totalPoints()
     {
         Session::start();
         
         $stmt = Database::getInstance()->prepare("SELECT total_points FROM users WHERE id = :id");
         $stmt->execute([':id' => $_SESSION['user_id']]);
-
+        
         return $stmt->fetch();
     }
 
