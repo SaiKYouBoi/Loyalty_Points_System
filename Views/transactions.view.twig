@@ -51,33 +51,27 @@
 								<table class="w-full">
 									<thead class="bg-slate-100 dark:bg-slate-800/50">
 										<tr>
-											<th class="px-4 py-3 text-left text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Date</th>
-											<th class="px-4 py-3 text-left text-slate-600 dark:text-slate-300 w-2/5 text-sm font-medium leading-normal">Description</th>
-											<th class="px-4 py-3 text-left text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Type</th>
-											<th class="px-4 py-3 text-right text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Points</th>
-											<th class="px-4 py-3 text-right text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Balance</th>
+											<th class="px-4 py-3 text-center text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Date</th>
+											<th class="px-4 py-3 text-center text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Description</th>
+											<th class="px-4 py-3 text-center text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Type</th>
+											<th class="px-4 py-3 text-center text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Points</th>
+											<th class="px-4 py-3 text-center text-slate-600 dark:text-slate-300 w-1/5 text-sm font-medium leading-normal">Balance</th>
 										</tr>
 									</thead>
 									<tbody>
+										{@ for transaction in transactions @}
 										<tr class="border-t border-t-slate-200 dark:border-t-slate-800">
-											<td class="h-[72px] px-4 py-2 text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Oct 26, 2023</td>
-											<td class="h-[72px] px-4 py-2 text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal">Order #SHP12345</td>
-											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
-												<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-3 py-1 text-xs font-medium text-green-700 dark:text-green-300">Earned</span>
+											<td class="h-[72px] px-4 py-2 text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal text-center">{{ transaction.createdat|date("M d, Y") }}</td>
+											<td class="h-[72px] px-4 py-2 text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal text-center">Order #SHP12345</td>
+											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal text-center">
+												<span class="inline-flex items-center rounded-full {{ transaction.type == 'earned' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' : 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300' }}  px-3 py-1 text-xs font-medium">{{ transaction.type|capitalize }}</span>
 											</td>
-											<td class="h-[72px] px-4 py-2 text-right text-green-600 dark:text-green-400 text-sm font-medium leading-normal">+50</td>
-											<td class="h-[72px] px-4 py-2 text-right text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">1,250 pts</td>
+											<td class="h-[72px] px-4 py-2 text-center text-green-600 dark:text-green-400 text-sm font-medium leading-normal">{{ transaction.type == 'earned' ? '+' : '-' }} {{ transaction.amount }}</td>
+											<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">{{ transaction.balance_after }} pts</td>
 										</tr>
-										<tr class="border-t border-t-slate-200 dark:border-t-slate-800">
-											<td class="h-[72px] px-4 py-2 text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Oct 15, 2023</td>
-											<td class="h-[72px] px-4 py-2 text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal">Points Redeemed for Coupon</td>
-											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
-												<span class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900/50 px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">Redeemed</span>
-											</td>
-											<td class="h-[72px] px-4 py-2 text-right text-orange-600 dark:text-orange-400 text-sm font-medium leading-normal">-200</td>
-											<td class="h-[72px] px-4 py-2 text-right text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">1,200 pts</td>
-										</tr>
-										<tr class="border-t border-t-slate-200 dark:border-t-slate-800">
+										{@ endfor @}
+										
+										{# <tr class="border-t border-t-slate-200 dark:border-t-slate-800">
 											<td class="h-[72px] px-4 py-2 text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Sep 30, 2023</td>
 											<td class="h-[72px] px-4 py-2 text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal">Monthly Points Expiration</td>
 											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
@@ -85,31 +79,14 @@
 											</td>
 											<td class="h-[72px] px-4 py-2 text-right text-red-600 dark:text-red-400 text-sm font-medium leading-normal">-10</td>
 											<td class="h-[72px] px-4 py-2 text-right text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">1,400 pts</td>
-										</tr>
-										<tr class="border-t border-t-slate-200 dark:border-t-slate-800">
-											<td class="h-[72px] px-4 py-2 text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Sep 12, 2023</td>
-											<td class="h-[72px] px-4 py-2 text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal">Order #SHP12311</td>
-											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
-												<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-3 py-1 text-xs font-medium text-green-700 dark:text-green-300">Earned</span>
-											</td>
-											<td class="h-[72px] px-4 py-2 text-right text-green-600 dark:text-green-400 text-sm font-medium leading-normal">+150</td>
-											<td class="h-[72px] px-4 py-2 text-right text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">1,410 pts</td>
-										</tr>
-										<tr class="border-t border-t-slate-200 dark:border-t-slate-800">
-											<td class="h-[72px] px-4 py-2 text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Aug 29, 2023</td>
-											<td class="h-[72px] px-4 py-2 text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal">Welcome Bonus</td>
-											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
-												<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-3 py-1 text-xs font-medium text-green-700 dark:text-green-300">Earned</span>
-											</td>
-											<td class="h-[72px] px-4 py-2 text-right text-green-600 dark:text-green-400 text-sm font-medium leading-normal">+50</td>
-											<td class="h-[72px] px-4 py-2 text-right text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">1,260 pts</td>
-										</tr>
+										</tr> #}
 									</tbody>
 								</table>
 							</div>
 						</div>
+
 						<!-- EmptyState (Example, would be shown conditionally) -->
-						<!-- 
+						{@ if transactions is empty @}
 						<div class="flex flex-col px-4 py-20 border border-dashed border-slate-300 dark:border-slate-700 rounded-xl">
 						    <div class="flex flex-col items-center gap-6 text-center">
 						        <div class="flex items-center justify-center size-16 bg-slate-100 dark:bg-slate-800 rounded-full text-primary">
@@ -124,11 +101,10 @@
 						        </button>
 						    </div>
 						</div> 
-						-->
+						{@ endif @}
 					</div>
 				</div>
 			</div>
 		</div>
-		{@ include 'footer.layout.twig' @}
 	</body>
 </html>
