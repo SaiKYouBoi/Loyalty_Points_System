@@ -46,10 +46,13 @@
 							<span class="text-xl font-bold text-slate-900 dark:text-white">${{ product.price }}</span>
 							{# <span class="text-sm text-slate-400 line-through">$189.99</span> #}
 						</div>
-						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
+						<form method="POST" action="/cart/add">
+    					<input type="hidden" name="product_id" value="{{ product.id }}">
+						<button class="mt-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors" type="submit">
 							<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
 							Add to Cart
 						</button>
+						</form>
 					</div>
 				</div>
                 {@ endfor @}

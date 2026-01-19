@@ -95,22 +95,7 @@
 						<span class="truncate">View Points History</span>
 					</button>
 				</a>
-				<div
-					class="fixed top-5 right-5 flex flex-col gap-4">
-
-					<!-- Success Alert -->
-					{@ if session().has("success") @}
-					<div class="max-w-xs flex-wrap items-start justify-between gap-4 rounded-lg border border-green-200 bg-green-50 p-4 text-slate-900 dark:border-green-800 dark:bg-green-900/40 dark:text-white" role="alert">
-						<div class="flex items-center gap-3">
-							<span class="material-symbols-outlined text-green-500">check_circle</span>
-							<div class="flex flex-col">
-								<p class="text-sm font-bold">Success!</p>
-								<p class="text-sm">{{ session().getFlash("success") }}</p>
-							</div>
-						</div>
-					</div>
-					{@ endif @}
-				</div>
+				
 			</div>
 		</div>
 	</main>

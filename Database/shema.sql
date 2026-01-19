@@ -69,7 +69,7 @@
 
     user_id INT NOT NULL,
 
-    total_amount INT NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
