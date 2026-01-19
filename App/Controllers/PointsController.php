@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
-use App\Helpers\Session;
-use App\Models\Point;
-use Database\Database;
-use Exception;
+    use App\Core\Controller;
+    use App\Helpers\Session;
+    use App\Models\Point;
+    use App\Models\User;
+    use Database\Database;
+    use Exception;
 
 class PointsController extends Controller
 {
@@ -23,6 +24,7 @@ class PointsController extends Controller
     public function addPoints()
     {
         try {
+            
             Session::start();
 
             $userId = $_SESSION['user_id'];
@@ -40,11 +42,7 @@ class PointsController extends Controller
                 ':total_amount' => $total
             ]);
 
-            $userpoints = Database::getInstance()->prepare("SELECT total_points FROM users WHERE id = :id");
-
-            $userpoints->execute([':id' => $userId]);
-
-            $totalpoints = $userpoints->fetch();
+            $totalpoints = (new User())->totalPoints();
 
             $balanceafter = $totalpoints['total_points'] + $amount;
 
