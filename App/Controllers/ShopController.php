@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\View;
 use App\Models\ProductModel;
+use App\Models\User;
 use Database\Database;
 use Exception;
 
@@ -17,6 +18,7 @@ class ShopController extends Controller
 
         $this->products = new ProductModel();
     }
+    
     public function shop(): void
     {
 
@@ -29,7 +31,9 @@ class ShopController extends Controller
 
     public function index(): void
     {
-        $this->view('home.view.twig');
+        $total_points = (new User())->totalPoints();
+        
+        $this->view('home.view.twig',['total_points' => $total_points['total_points']]);
     }
     
     public function addToCart(): void
