@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             Session::flash('email-err', 'Invalid email.');
-            $err = true;
+            $err = true;         
         } elseif (User::emailExists($email)) {
             Session::flash('email-err', 'Email already exists.');
             $err = true;
