@@ -8,7 +8,15 @@ use Database\Database;
 
 
 class AuthController extends Controller
-{
+{   
+    private User $user;
+
+    public function __construct()
+    {
+
+        $this->user = new User();
+    }
+
     public function login(): void
     {
         $this->view('login.view.twig');
@@ -32,7 +40,7 @@ class AuthController extends Controller
         $this->validateRegister($err, $name, $email, $password, $confirm);
 
         if (!$err) {
-            if (User::create($name, $email, $password)) {
+            if ($this->user->create($name, $email, $password)) {
                 Session::flash('success', 'Registration successful.');
                 header('Location: /login');
                 exit();
@@ -63,7 +71,7 @@ class AuthController extends Controller
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             Session::flash('email-err', 'Invalid email.');
             $err = true;         
-        } elseif (User::emailExists($email)) {
+        } elseif ($this->user->emailExists($email)) {
             Session::flash('email-err', 'Email already exists.');
             $err = true;
         }
@@ -89,7 +97,7 @@ class AuthController extends Controller
         $this->validateLogin($err, $email, $password);
 
         if (!$err) {
-            $user = User::findByEmail($email);
+            $user = $this->user->findByEmail($email);
 
             if ($user && password_verify($password, $user->getPasswordHash())) {
                 Session::set('user_id', $user->getId());
@@ -119,8 +127,9 @@ class AuthController extends Controller
     }
 
     public function logout(): void
-    {
-        session_destroy();
+    {   
+        Session::start();
+        Session::destroy();
         header('Location: /login');
         exit();
     }
