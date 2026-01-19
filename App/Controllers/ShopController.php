@@ -5,6 +5,7 @@ use App\Core\Controller;
 use App\Core\View;
 use App\Models\ProductModel;
 use Database\Database;
+use Exception;
 
 class ShopController extends Controller
 {
@@ -30,18 +31,7 @@ class ShopController extends Controller
     {
         $this->view('home.view.twig');
     }
-    public function reward(): void
-    {
-        $this->view('rewards.view.twig');
-    }
-
-
-    public function redeem(): void
-    {
-        // handle POST logic here
-        echo "Reward redeemed";
-    }
-
+    
     public function addToCart(): void
     {
         session_start();
@@ -94,12 +84,9 @@ class ShopController extends Controller
     {
         session_start();
         unset($_SESSION['cart']);
-        $this->view('home.view.twig');
-    }
-
-    public function addPoints()
-    {
-
+        
+        header('Location: /shop');
+        exit();
     }
 
 }
