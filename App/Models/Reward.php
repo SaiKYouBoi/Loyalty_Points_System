@@ -1,6 +1,8 @@
-<?php 
+<?php
 
 namespace App\Models;
+
+use Database\Database;
 
 class Reward
 {
@@ -24,5 +26,12 @@ class Reward
         $this->stock = $stock;
     }
 
-
+    public static function getAll()
+    {
+        $stmt = Database::getInstance()->prepare("SELECT * FROM rewards");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
 }
