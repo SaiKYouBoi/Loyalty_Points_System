@@ -48,7 +48,6 @@ class Router
         $controllerInstance->$methodAction();
     }
 
-
     private static function normalizeUri(string $uri): string
     {
         $uri = parse_url($uri, PHP_URL_PATH);
