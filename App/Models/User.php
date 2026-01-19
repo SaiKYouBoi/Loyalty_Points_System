@@ -1,11 +1,12 @@
-<?php 
+<?php
 namespace App\Models;
 
+use App\Helpers\Session;
 use Database\Database;
 use DateTime;
 use PDO;
 
-class User 
+class User
 {
     private int $id;
     private string $email;
@@ -16,12 +17,12 @@ class User
 
     public function __construct(array $data)
     {
-        $this->id           = (int) $data['id'];
-        $this->email        = $data['email'];
+        $this->id = (int) $data['id'];
+        $this->email = $data['email'];
         $this->password = $data['password_hash'];
-        $this->name         = $data['name'] ?? null;
-        $this->totalPoints  = $data['total_points'] ?? 0;
-        $this->createdAt    = new DateTime($data['created_at']);
+        $this->name = $data['name'] ?? null;
+        $this->totalPoints = $data['total_points'] ?? 0;
+        $this->createdAt = new DateTime($data['created_at']);
     }
 
     public static function findByEmail(string $email): ?self
@@ -58,6 +59,16 @@ class User
             $email,
             password_hash($password, PASSWORD_BCRYPT)
         ]);
+    }
+
+    public static function totalPoints()
+    {
+        Session::start();
+        
+        $stmt = Database::getInstance()->prepare("SELECT total_points FROM users WHERE id = :id");
+        $stmt->execute([':id' => $_SESSION['user_id']]);
+
+        return $stmt->fetch();
     }
 
     public function getId(): int
