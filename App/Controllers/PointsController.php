@@ -2,29 +2,34 @@
 
 namespace App\Controllers;
 
-    use App\Core\Controller;
-    use App\Helpers\Session;
-    use App\Models\Point;
-    use App\Models\User;
-    use Database\Database;
-    use Exception;
+use App\Core\Controller;
+use App\Helpers\Session;
+use App\Models\Point;
+use App\Models\User;
+use Database\Database;
+use Exception;
 
 class PointsController extends Controller
 {
+    private Point $points;
 
+    public function __construct()
+    {
+
+        $this->points = new Point();
+    }
     public function transactions(): void
     {
-        $stmt = Database::getInstance()->prepare("SELECT * FROM points_transactions");
-        $stmt->execute();
-        $transactions = $stmt->fetchAll();
 
-    $this->view('transactions.view.twig',['transactions'=>$transactions]);
+        $transactions = $this->points->getAlltransaction();
+
+        $this->view('transactions.view.twig', ['transactions' => $transactions]);
     }
-    
+
     public function addPoints()
     {
         try {
-            
+
             Session::start();
 
             $userId = $_SESSION['user_id'];
@@ -76,8 +81,48 @@ class PointsController extends Controller
         }
     }
 
-    public function RedeemPoits()
+    public function RedeemPoints()
     {
+        try {
+            Session::start();
 
+            $userId = $_SESSION['user_id'];
+
+            $rewardPoints = (int) $_POST['reward_points'];
+
+            Database::getInstance()->beginTransaction();
+
+            $totalpoints = (new User())->totalPoints();
+
+            $balanceafter = $totalpoints['total_points'] - $rewardPoints;
+
+
+            $stmtredeempoints = Database::getInstance()->prepare("INSERT INTO points_transactions (user_id,type,amount,balance_after) VALUES (:user_id,:type,:amount,:balance_after)");
+            $stmtredeempoints->execute([
+                ':user_id' => $userId,
+                ':type' => 'redeemed',
+                ':amount' => $rewardPoints,
+                ':balance_after' => $balanceafter
+            ]);
+
+            $stmtupdatepoints = Database::getInstance()->prepare("UPDATE users SET total_points = :totalpoints WHERE id = :id");
+
+            $stmtupdatepoints->execute([
+                ':totalpoints' => $balanceafter,
+                ':id' => $userId
+            ]);
+
+         
+            if (Database::getInstance()->commit()) {
+                Session::flash('success', 'Reward redeemed successfully');
+                header('Location: /transactions');
+            }
+
+
+        } catch (Exception $e) {
+
+            Database::getInstance()->rollBack();
+            echo "Transaction failed: " . $e->getMessage();
+        }
     }
 }
