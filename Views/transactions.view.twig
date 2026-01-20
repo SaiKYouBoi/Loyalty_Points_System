@@ -66,7 +66,7 @@
 											<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal text-center">
 												<span class="inline-flex items-center rounded-full {{ transaction.type == 'earned' ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' : 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300' }}  px-3 py-1 text-xs font-medium">{{ transaction.type|capitalize }}</span>
 											</td>
-											<td class="h-[72px] px-4 py-2 text-center text-green-600 dark:text-green-400 text-sm font-medium leading-normal">{{ transaction.type == 'earned' ? '+' : '-' }} {{ transaction.amount }}</td>
+											<td class="h-[72px] px-4 py-2 text-center {{ transaction.type == 'earned' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' }} text-sm font-medium leading-normal">{{ transaction.type == 'earned' ? '+' : '-' }} {{ transaction.amount }}</td>
 											<td class="h-[72px] px-4 py-2 text-center text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">{{ transaction.balance_after }} pts</td>
 										</tr>
 										{@ endfor @}
