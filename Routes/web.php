@@ -23,3 +23,5 @@ Router::post('/cart/add', [ShopController::class, 'addToCart']);
 Router::post('/cart/empty', [ShopController::class, 'emptyCart']);
 
 Router::post('/purchase', [PointsController::class, 'addPoints']);
+
+Router::post('/redeem', [PointsController::class, 'RedeemPoints']);
