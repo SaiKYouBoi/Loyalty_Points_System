@@ -84,35 +84,46 @@ class PointsController extends Controller
     public function RedeemPoints()
     {
         try {
-            Session::start();
 
-            $userId = $_SESSION['user_id'];
+            Session::start();
 
             $rewardPoints = (int) $_POST['reward_points'];
 
-            Database::getInstance()->beginTransaction();
+            $rewardStock = (int) $_POST['reward_stock'];
 
             $totalpoints = (new User())->totalPoints();
 
-            $balanceafter = $totalpoints['total_points'] - $rewardPoints;
+            if ($rewardPoints > $totalpoints['total_points'] || $rewardStock <= 0) {
+
+                Session::flash('error', 'Error while Redeeming');
+                header('Location: /transactions');
+
+            } else {
+                Database::getInstance()->beginTransaction();
+
+                $userId = $_SESSION['user_id'];
+
+                $balanceafter = $totalpoints['total_points'] - $rewardPoints;
 
 
-            $stmtredeempoints = Database::getInstance()->prepare("INSERT INTO points_transactions (user_id,type,amount,balance_after) VALUES (:user_id,:type,:amount,:balance_after)");
-            $stmtredeempoints->execute([
-                ':user_id' => $userId,
-                ':type' => 'redeemed',
-                ':amount' => $rewardPoints,
-                ':balance_after' => $balanceafter
-            ]);
+                $stmtredeempoints = Database::getInstance()->prepare("INSERT INTO points_transactions (user_id,type,amount,balance_after) VALUES (:user_id,:type,:amount,:balance_after)");
+                $stmtredeempoints->execute([
+                    ':user_id' => $userId,
+                    ':type' => 'redeemed',
+                    ':amount' => $rewardPoints,
+                    ':balance_after' => $balanceafter
+                ]);
 
-            $stmtupdatepoints = Database::getInstance()->prepare("UPDATE users SET total_points = :totalpoints WHERE id = :id");
+                $stmtupdatepoints = Database::getInstance()->prepare("UPDATE users SET total_points = :totalpoints WHERE id = :id");
 
-            $stmtupdatepoints->execute([
-                ':totalpoints' => $balanceafter,
-                ':id' => $userId
-            ]);
+                $stmtupdatepoints->execute([
+                    ':totalpoints' => $balanceafter,
+                    ':id' => $userId
+                ]);
 
-         
+            }
+
+
             if (Database::getInstance()->commit()) {
                 Session::flash('success', 'Reward redeemed successfully');
                 header('Location: /transactions');
