@@ -12,6 +12,7 @@ class RewardsController extends Controller
         $rewards = Reward::getAll();
         $total = (new User)->totalPoints();
 
+
         $this->view('rewards.view.twig', [
             'rewards' => $rewards,
             'total_points' => $total['total_points']
