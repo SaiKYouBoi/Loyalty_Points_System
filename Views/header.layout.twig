@@ -107,6 +107,18 @@ borderRadius: {
 						</div>
 					</div>
 					{@ endif @}
+					
+					{@ if session().has("error") @}
+					<div class="max-w-xs flex-wrap items-start justify-between gap-4 rounded-lg border border-red-200 bg-red-50 p-4 text-slate-900 dark:border-red-800 dark:bg-red-900/40 dark:text-white" role="alert">
+							<div class="flex items-center gap-3">
+								<span class="material-symbols-outlined text-red-500">error</span>
+								<div class="flex flex-col">
+									<p class="text-sm font-bold">Error</p>
+									<p class="text-sm">{{ session().getFlash("error") }}</p>
+								</div>
+							</div>
+						</div>
+					{@ endif @}
 				</div>
 		</header>
 	</body>
